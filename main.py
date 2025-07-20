@@ -26,7 +26,7 @@ states = data["state"]
 states_list = states.to_list()
 
 guessed_states = []
-
+wrong_states = []
 while len(guessed_states) < 50:
 
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="Whats the another state's name?")
@@ -58,6 +58,13 @@ while len(guessed_states) < 50:
         row = data[data.state == answer_state]
         t.goto(row.x.item(), row.y.item())
         t.write(answer_state)
+    
+
+    if answer_state not in states_list:
+        wrong_states.append(answer_state)
+wrong_data = pandas.DataFrame(wrong_states)
+wrong_data.to_csv("Wrong_input.csv")
+        
 
 
 
