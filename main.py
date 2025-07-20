@@ -41,6 +41,15 @@ while len(guessed_states) < 50:
     #         turtle.penup()
     #         turtle.write(f"{state_name}",align="center",font=("Courier", 15, "normal"))
 
+    if answer_state == "Exit":
+        missing_states = []
+        for state in states_list:
+            if state not in guessed_states:
+                missing_states.append(state)
+        new_data = pandas.DataFrame(missing_states)
+        new_data.to_csv("learning_states.csv")
+
+        break
     if answer_state in states_list:
         guessed_states.append(answer_state)
         t = turtle.Turtle()
@@ -54,6 +63,6 @@ while len(guessed_states) < 50:
 
 
 
-turtle.mainloop()   #it is the alternate version of screen.exitonclick()
+# turtle.mainloop()   #it is the alternate version of screen.exitonclick()
 
 # screen.exitonclick()
