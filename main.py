@@ -62,10 +62,23 @@ while len(guessed_states) < 50:
 
     if answer_state not in states_list:
         wrong_states.append(answer_state)
+
 wrong_data = pandas.DataFrame(wrong_states)
 wrong_data.to_csv("Wrong_input.csv")
         
 
+# -----------for better writing in csv ---------
+
+# import csv
+
+# # Write custom header and then wrong answers
+# with open("Wrong_input.csv", "w", newline="") as file:
+#     writer = csv.writer(file)
+#     writer.writerow(["Here is your All Wrong answers that you give"])
+#     writer.writerow([])  # Empty row for spacing
+#     writer.writerow(["Wrong Answer"])  # Optional actual column header
+#     for wrong in wrong_states:
+        # writer.writerow([wrong])
 
 
 
