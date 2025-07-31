@@ -42,10 +42,13 @@ while len(guessed_states) < 50:
     #         turtle.write(f"{state_name}",align="center",font=("Courier", 15, "normal"))
 
     if answer_state == "Exit":
-        missing_states = []
-        for state in states_list:
-            if state not in guessed_states:
-                missing_states.append(state)
+        # missing_states = []
+        # for state in states_list:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
+        # -----------list comprehension added below for minimize the 3 line of code into 1 line ----------------
+
+        missing_states = [state for state in states_list if state not in guessed_states]
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv("learning_states.csv")
 
